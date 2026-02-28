@@ -1,0 +1,1431 @@
+/* ==============================
+   CSS RESET & GLOBAL STYLES
+============================== */
+:root {
+    --bg-color: #0f1115;
+    --panel-bg: rgba(26, 29, 36, 0.7);
+    --border-color: rgba(255, 255, 255, 0.1);
+    --text-primary: #ffffff;
+    --text-secondary: #a1a5b5;
+    --input-bg: rgba(255, 255, 255, 0.05);
+    --accent: #22d3ee;
+    --accent-glow: rgba(34, 211, 238, 0.3);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body.app-bg {
+    font-family: 'Outfit', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-primary);
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+/* ==============================
+   HEADER
+============================== */
+.app-header {
+    background: rgba(15, 17, 21, 0.8);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border-color);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.header-content {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.logo h1 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+}
+
+.logo span {
+    color: var(--accent);
+}
+
+.logo-icon {
+    width: 32px;
+    height: 32px;
+    background: linear-gradient(45deg, var(--accent), #fff);
+    border-radius: 8px;
+    mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><polygon points='12 2 2 7 12 12 22 7 12 2'></polygon><polyline points='2 17 12 22 22 17'></polyline><polyline points='2 12 12 17 22 12'></polyline></svg>") center/contain no-repeat;
+    -webkit-mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><polygon points='12 2 2 7 12 12 22 7 12 2'></polygon><polyline points='2 17 12 22 22 17'></polyline><polyline points='2 12 12 17 22 12'></polyline></svg>") center/contain no-repeat;
+}
+
+/* Header Tabs Navigation */
+.main-nav {
+    display: flex;
+    justify-content: center;
+}
+
+.nav-tabs {
+    display: flex;
+    list-style: none;
+    gap: 8px;
+    background: var(--input-bg);
+    padding: 6px;
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+}
+
+.nav-tab {
+    text-decoration: none;
+    color: var(--text-secondary);
+    padding: 8px 18px;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    display: block;
+}
+
+.nav-tab:hover {
+    color: var(--text-primary);
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.nav-tab.active {
+    background: var(--accent);
+    color: #000;
+    font-weight: 600;
+    box-shadow: 0 0 10px var(--accent-glow);
+}
+
+.header-actions {
+    display: flex;
+    align-items: center;
+}
+
+.login-btn {
+    background: transparent;
+    color: var(--text-primary);
+    border: 1px solid var(--border-color);
+    padding: 8px 20px;
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 0.95rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.login-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+/* ==============================
+   LAYOUT
+============================== */
+.app-container {
+    max-width: 1500px;
+    margin: 0 auto;
+    padding: 2rem;
+    display: grid;
+    grid-template-columns: 450px 1fr;
+    gap: 2rem;
+    align-items: start;
+}
+
+@media (max-width: 992px) {
+    .app-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ==============================
+   FORM SECTION (LEFT)
+============================== */
+.glass-panel {
+    background: var(--panel-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 20px;
+    padding: 2rem;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(20px);
+}
+
+.form-card h2 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
+
+.subtitle {
+    color: var(--text-secondary);
+    margin-bottom: 1.5rem;
+    font-size: 0.95rem;
+}
+
+.form-group {
+    margin-bottom: 1.25rem;
+}
+
+.form-row {
+    display: flex;
+    gap: 1rem;
+}
+
+.flex-1 {
+    flex: 1;
+}
+
+.flex-2 {
+    flex: 2;
+}
+
+label {
+    display: block;
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    margin-bottom: 0.4rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+input[type="text"],
+textarea {
+    width: 100%;
+    padding: 10px 14px;
+    background: var(--input-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    color: var(--text-primary);
+    font-family: inherit;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+    outline: none;
+    resize: vertical;
+}
+
+input[type="text"]:focus,
+textarea:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 4px var(--accent-glow);
+    background: rgba(255, 255, 255, 0.08);
+}
+
+/* File Upload */
+.file-upload-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    position: relative;
+    background: var(--input-bg);
+    border: 1px dashed var(--border-color);
+    border-radius: 10px;
+    padding: 8px;
+    transition: all 0.3s ease;
+}
+
+.file-upload-wrapper:hover {
+    border-color: var(--accent);
+}
+
+.file-input {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+    z-index: 10;
+}
+
+.file-upload-button {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+.file-name {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Template Selector */
+.template-selector {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+.template-option {
+    cursor: pointer;
+}
+
+.template-option input {
+    display: none;
+}
+
+.template-card {
+    background: var(--input-bg);
+    border: 2px solid var(--border-color);
+    border-radius: 12px;
+    padding: 10px;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.template-option input:checked+.template-card {
+    border-color: var(--accent);
+    background: rgba(34, 211, 238, 0.1);
+    box-shadow: 0 0 10px var(--accent-glow);
+}
+
+.tpl-thumb {
+    height: 60px;
+    border-radius: 6px;
+    margin-bottom: 8px;
+    background-size: cover;
+    background-position: center;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.tpl-1-thumb {
+    background: linear-gradient(135deg, #4e2a1b, #2c160e);
+}
+
+.tpl-2-thumb {
+    background: linear-gradient(180deg, #f0f4f8 40%, #1e3a8a 40%);
+}
+
+.tpl-3-thumb {
+    background: linear-gradient(180deg, #f59e0b 40%, #ffffff 40%);
+}
+
+.tpl-4-thumb {
+    background: #000000;
+}
+
+.template-card span {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+/* ==============================
+   PREVIEW SECTION (RIGHT)
+============================== */
+.preview-section {
+    position: sticky;
+    top: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.preview-header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    padding: 0 1rem;
+}
+
+.primary-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--accent);
+    color: #000;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 50px;
+    font-weight: 700;
+    font-family: inherit;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px var(--accent-glow);
+}
+
+.primary-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px var(--accent-glow);
+    filter: brightness(1.1);
+}
+
+.preview-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 500px;
+}
+
+/* Base Canvas style */
+.poster-canvas {
+    display: none;
+    /* hidden by default */
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+    background-color: #fff;
+    transform-origin: center top;
+}
+
+.poster-canvas.active-poster {
+    display: block;
+    animation: fadeIn 0.4s ease-out forwards;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Scaling logic for preview panel so large templates fit */
+@media (min-width: 993px) {
+    .poster-tpl-1 {
+        transform: scale(0.95);
+    }
+
+    .poster-tpl-2 {
+        transform: scale(0.8);
+    }
+
+    .poster-tpl-3 {
+        transform: scale(0.8);
+    }
+
+    .poster-tpl-4 {
+        transform: scale(0.8);
+    }
+}
+
+@media (max-width: 992px) {
+    .poster-canvas {
+        transform: scale(0.8);
+        transform-origin: top left;
+    }
+}
+
+@media (max-width: 600px) {
+    .poster-canvas {
+        transform: scale(0.5);
+    }
+}
+
+/* ==============================================================
+   TEMPLATE 1: Landscape (Similar to image 1 - Maths/Brown)
+============================================================== */
+.poster-tpl-1 {
+    width: 800px;
+    height: 450px;
+    background: radial-gradient(circle at 70% 50%, #6e3922, #30170d);
+    color: #ffffff;
+    font-family: 'Oswald', sans-serif;
+}
+
+.t1-content {
+    display: flex;
+    width: 100%;
+    height: 100%;
+}
+
+.t1-left {
+    width: 55%;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    z-index: 10;
+}
+
+.t1-right {
+    width: 45%;
+    position: relative;
+}
+
+.t1-header h1 {
+    font-size: 5rem;
+    line-height: 1;
+    margin: 0;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+.t1-header h2 {
+    font-size: 3rem;
+    line-height: 1;
+    color: #e62222;
+    background: #ffffff;
+    display: inline-block;
+    padding: 0 15px;
+    border-radius: 8px 30px 30px 8px;
+    margin-top: 5px;
+}
+
+.t1-desc-box {
+    margin-top: 15px;
+}
+
+.t1-desc-box p {
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.2rem;
+    line-height: 1.2;
+    font-weight: 600;
+    color: #ffca99;
+    text-transform: uppercase;
+}
+
+.t1-bottom {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.t1-badge {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: #0078d4;
+    padding: 10px 15px;
+    border-radius: 5px;
+}
+
+.t1-badge svg {
+    color: #fff;
+}
+
+.t1-badge div {
+    display: flex;
+    flex-direction: column;
+    line-height: 1;
+}
+
+.t1-badge strong {
+    font-size: 1.2rem;
+}
+
+.t1-badge span {
+    font-size: 0.7rem;
+    letter-spacing: 1px;
+}
+
+.t1-name-box {
+    border-left: 3px solid #fff;
+    padding-left: 15px;
+}
+
+.t1-name-box span {
+    font-size: 0.9rem;
+    color: #6ed359;
+    background: #000;
+    padding: 2px 8px;
+    display: inline-block;
+    margin-bottom: 5px;
+    border-radius: 3px;
+}
+
+.t1-name-box h3 {
+    font-size: 1.4rem;
+    font-weight: 500;
+    line-height: 1;
+}
+
+.t1-contact {
+    margin-top: auto;
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.9rem;
+    color: #cccccc;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    padding-top: 10px;
+}
+
+.t1-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+}
+
+.t1-gradient-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to right, #30170d 0%, transparent 40%);
+}
+
+/* ==============================================================
+   TEMPLATE 2: Tech Split (Similar to image 2 - ICT / Blue&White)
+============================================================== */
+.poster-tpl-2 {
+    width: 500px;
+    height: 700px;
+    background: #ffffff;
+    color: #1a202c;
+    font-family: 'Outfit', sans-serif;
+    position: relative;
+}
+
+.t2-top {
+    height: 45%;
+    padding: 30px;
+    position: relative;
+    background: url("data:image/svg+xml;utf8,<svg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'><circle cx='50' cy='50' r='40' fill='none' stroke='%23f0f4f8' stroke-width='10'/></svg>") no-repeat;
+    background-position: right -20px top -20px;
+    background-size: 200px;
+}
+
+.t2-info-badges {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 5px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.t2-badge-red {
+    background: #e53e3e;
+    color: #fff;
+    padding: 3px 10px;
+    border-radius: 20px;
+}
+
+.t2-badge-green {
+    background: #38a169;
+    color: #fff;
+    padding: 3px 10px;
+    border-radius: 20px;
+}
+
+.t2-top h1 {
+    font-size: 6rem;
+    line-height: 0.9;
+    color: #2b6cb0;
+    font-weight: 800;
+    margin-bottom: 10px;
+}
+
+.t2-subtitle {
+    font-size: 0.9rem;
+    max-width: 60%;
+    font-weight: 500;
+    color: #4a5568;
+}
+
+.t2-extra-boxes {
+    margin-top: 20px;
+    display: flex;
+    gap: 15px;
+}
+
+.t2-box {
+    padding: 8px 15px;
+    font-weight: 700;
+    font-size: 1.1rem;
+    border-radius: 5px;
+}
+
+.box-blue {
+    background: #2b6cb0;
+    color: #fff;
+}
+
+.box-outline {
+    border: 2px solid #2b6cb0;
+    color: #2b6cb0;
+}
+
+.t2-photo {
+    position: absolute;
+    right: 20px;
+    bottom: -150px;
+    width: 300px;
+    height: 350px;
+    object-fit: cover;
+    z-index: 10;
+    filter: drop-shadow(-10px 10px 20px rgba(0, 0, 0, 0.3));
+    mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
+}
+
+.t2-bottom {
+    height: 55%;
+    background: #2d3748;
+    color: #ffffff;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.t2-name-wrap h2 {
+    font-size: 3rem;
+    color: #ecc94b;
+    line-height: 1;
+    font-family: 'Oswald', sans-serif;
+    text-transform: uppercase;
+    max-width: 70%;
+}
+
+.t2-qual {
+    font-size: 1rem;
+    color: #a0aec0;
+    margin-top: 5px;
+}
+
+.t2-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+    padding-top: 15px;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.t2-icons {
+    font-size: 1.5rem;
+    letter-spacing: 5px;
+}
+
+.t2-contact-huge {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: #22d3ee;
+}
+
+/* ==============================================================
+   TEMPLATE 3: Bright Profile (Similar to image 3 - Maths/Orange)
+============================================================== */
+.poster-tpl-3 {
+    width: 500px;
+    height: 700px;
+    background: #ffffff;
+    font-family: 'Outfit', sans-serif;
+}
+
+.t3-top {
+    height: 45%;
+    background: linear-gradient(to bottom, #2b6cb0 0%, #2b6cb0 60px, #dd6b20 60px, #ed8936 100%);
+    position: relative;
+    padding: 30px;
+    display: flex;
+}
+
+.t3-text-area {
+    width: 65%;
+    z-index: 10;
+}
+
+.t3-year-box h2 {
+    background: #ffffff;
+    color: #2b6cb0;
+    display: inline-block;
+    padding: 5px 20px;
+    font-size: 3rem;
+    font-weight: 800;
+    border-radius: 8px;
+    margin-top: -10px;
+    margin-bottom: 20px;
+}
+
+.t3-text-area h1 {
+    font-size: 4rem;
+    line-height: 1;
+    color: #742a2a;
+    font-family: 'Oswald', sans-serif;
+    margin-bottom: 10px;
+}
+
+.t3-medium-badge {
+    background: #e53e3e;
+    color: white;
+    padding: 5px 15px;
+    display: inline-block;
+    font-weight: 600;
+}
+
+.t3-photo {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 250px;
+    height: 300px;
+    object-fit: cover;
+    z-index: 5;
+    mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
+}
+
+.t3-bottom {
+    height: 55%;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.t3-course-title {
+    color: #9b2c2c;
+    font-size: 1.5rem;
+    text-align: center;
+    margin-top: 10px;
+    font-weight: 800;
+}
+
+.t3-student-limit {
+    text-align: center;
+    font-size: 0.8rem;
+    color: #4a5568;
+    margin-bottom: 15px;
+}
+
+.t3-content-split {
+    display: flex;
+    gap: 15px;
+    flex: 1;
+}
+
+.t3-desc {
+    flex: 1;
+    font-size: 0.75rem;
+    color: #2d3748;
+    line-height: 1.4;
+}
+
+.t3-name-section {
+    flex: 1;
+    border-left: 2px solid #cbd5e0;
+    padding-left: 15px;
+}
+
+.t3-name-section span {
+    font-size: 0.8rem;
+    color: #c53030;
+    font-weight: 600;
+}
+
+.t3-name-section h2 {
+    font-size: 2rem;
+    line-height: 1;
+    color: #2b6cb0;
+    font-family: 'Oswald', sans-serif;
+    margin: 5px 0;
+}
+
+.t3-name-section p {
+    font-size: 0.75rem;
+    color: #4a5568;
+}
+
+.t3-banner-orange {
+    background: #ed8936;
+    color: #fff;
+    text-align: center;
+    padding: 8px;
+    font-weight: 600;
+    font-size: 0.8rem;
+    border-radius: 5px;
+    margin-top: 10px;
+    margin-bottom: 15px;
+}
+
+.t3-info-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 10px;
+}
+
+.t3-grid-item {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.t3-label {
+    font-size: 0.7rem;
+    color: #718096;
+}
+
+.t3-grid-item strong,
+.t3-grid-item span {
+    font-size: 0.9rem;
+    color: #2d3748;
+    font-weight: 700;
+}
+
+/* ==============================================================
+   TEMPLATE 4: Dark Impact (Similar to image 4 - Black/Red ICT)
+============================================================== */
+.poster-tpl-4 {
+    width: 600px;
+    height: 600px;
+    background: #000;
+    color: #fff;
+    font-family: 'Outfit', sans-serif;
+}
+
+.t4-container {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+}
+
+.t4-photo {
+    position: absolute;
+    top: 10%;
+    left: -50px;
+    width: 350px;
+    height: 450px;
+    object-fit: cover;
+    opacity: 0.6;
+    filter: grayscale(100%) contrast(1.2);
+    z-index: 1;
+}
+
+.t4-gradient {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.8) 20%, rgba(0, 0, 0, 1) 60%);
+    z-index: 2;
+}
+
+.t4-content {
+    position: relative;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.t4-header {
+    text-align: right;
+    margin-bottom: 30px;
+}
+
+.t4-header h2 {
+    font-size: 3.5rem;
+    font-weight: 800;
+    line-height: 1;
+}
+
+.t4-header h1 {
+    font-size: 8rem;
+    line-height: 0.8;
+    color: #e53e3e;
+    font-family: 'Oswald', sans-serif;
+    letter-spacing: -2px;
+}
+
+.t4-desc-container {
+    margin-left: auto;
+    width: 60%;
+    text-align: right;
+    flex: 1;
+}
+
+.t4-desc-container p {
+    font-size: 0.85rem;
+    color: #a0aec0;
+    line-height: 1.6;
+    text-align: justify;
+    text-align-last: right;
+    border-right: 2px solid #e53e3e;
+    padding-right: 15px;
+}
+
+.t4-sub-details {
+    margin-top: 15px;
+    font-size: 1rem !important;
+    color: #fff !important;
+    font-weight: 700;
+    border-right: none !important;
+}
+
+.t4-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-top: auto;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.t4-name-wrap h3 {
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+.t4-name-wrap span {
+    font-size: 0.9rem;
+    color: #a0aec0;
+}
+
+.t4-contact-wrap {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #e53e3e;
+}
+
+.t4-contact-wrap h2 {
+    font-size: 2rem;
+    font-weight: 800;
+    color: #fff;
+}
+
+/* ==============================================================
+   TEMPLATE 5: Expert Class (Pink & Dark)
+============================================================== */
+.poster-tpl-5 {
+    width: 600px;
+    height: 800px;
+    background: #111;
+    color: #fff;
+    font-family: 'Outfit', sans-serif;
+    position: relative;
+}
+
+.t5-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at 50% 10%, #2a2a2a 0%, #111 60%);
+    z-index: 0;
+}
+
+.t5-content {
+    position: relative;
+    z-index: 10;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.t5-top-bar {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+}
+
+.t5-medium-badge {
+    background: #1ca5e8;
+    color: white;
+    padding: 8px 15px;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 1.1rem;
+    align-self: flex-start;
+}
+
+.t5-unit-badge {
+    position: relative;
+    width: 150px;
+    height: 150px;
+}
+
+.t5-ub-circle {
+    position: absolute;
+    inset: 0;
+    border: 10px solid #e91e63;
+    border-radius: 50%;
+    background: #fff;
+}
+
+.t5-ub-inner {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #8cc63f;
+    text-align: center;
+}
+
+.t5-ub-inner strong {
+    font-size: 4rem;
+    line-height: 1;
+}
+
+.t5-ub-inner small {
+    font-size: 0.8rem;
+    font-weight: 700;
+    max-width: 80%;
+    color: #1ca5e8;
+}
+
+.t5-header-info {
+    padding: 0 30px;
+    margin-top: -30px;
+}
+
+.t5-year-row {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.t5-year {
+    font-size: 4rem;
+    font-weight: 800;
+    line-height: 1;
+}
+
+.t5-district-badge {
+    text-align: center;
+    color: #ffd700;
+    font-family: 'Oswald', sans-serif;
+}
+
+.t5-district-badge h2 {
+    font-size: 2.5rem;
+    line-height: 0.8;
+}
+
+.t5-subjectName {
+    color: #e91e63;
+    font-size: 3rem;
+    font-weight: 800;
+    letter-spacing: 2px;
+    margin-top: 10px;
+    text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.5);
+}
+
+.t5-expert {
+    color: #ffd700;
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: 5px;
+}
+
+.t5-middle-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    padding: 20px 30px;
+    flex-grow: 1;
+}
+
+.t5-loc-box {
+    color: #8cc63f;
+    font-weight: 700;
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+    line-height: 1.2;
+}
+
+.t5-loc-box small {
+    color: #fff;
+    font-weight: 400;
+    display: block;
+    margin-left: 20px;
+}
+
+.t5-right-col h4 {
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+}
+
+.t5-programs {
+    color: #ffd700;
+}
+
+.t5-programs p {
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+
+.t5-programs ul {
+    list-style: none;
+    color: #fff;
+    padding-left: 10px;
+}
+
+.t5-programs li::before {
+    content: '▶';
+    color: #e91e63;
+    /* changed from white to pink for visibility */
+    margin-right: 5px;
+    font-size: 0.8rem;
+}
+
+.t5-inst {
+    color: #ffd700;
+    font-size: 0.85rem;
+    margin-top: 20px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.t5-photo {
+    position: absolute;
+    bottom: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 450px;
+    height: 500px;
+    object-fit: cover;
+    z-index: 20;
+    pointer-events: none;
+    mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
+}
+
+.t5-footer {
+    position: absolute;
+    bottom: 60px;
+    right: 30px;
+    z-index: 30;
+    text-align: right;
+}
+
+.t5-quali {
+    color: #fff;
+    border-bottom: 2px solid #e91e63;
+    display: inline-block;
+    padding-bottom: 5px;
+    margin-bottom: 5px;
+}
+
+.t5-teacher-name {
+    font-size: 2.5rem;
+    line-height: 1;
+    color: #fff;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
+}
+
+.t5-bottom-bar {
+    background: #e91e63;
+    padding: 15px;
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: 800;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    z-index: 40;
+}
+
+/* ==============================================================
+   TEMPLATE 6: Paper Class (Brown/Cream)
+============================================================== */
+.poster-tpl-6 {
+    width: 600px;
+    height: 600px;
+    background: #f4ede3;
+    color: #3b2210;
+    font-family: 'Outfit', sans-serif;
+    position: relative;
+    overflow: hidden;
+}
+
+.t6-header {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+}
+
+.t6-badge-red {
+    background: #c9302c;
+    color: #fff;
+    padding: 5px 15px;
+    font-weight: 700;
+    font-size: 1.1rem;
+    display: inline-block;
+}
+
+.t6-title {
+    font-size: 2rem;
+    font-family: 'Oswald', sans-serif;
+    color: #fff;
+    padding: 0 15px;
+    margin-top: 5px;
+    background-color: transparent;
+    -webkit-text-stroke: 1px #3b2210;
+    color: #3b2210;
+}
+
+.t6-header-right {
+    text-align: right;
+}
+
+.t6-adv {
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.t6-year {
+    font-size: 3.5rem;
+    line-height: 0.9;
+    color: #c9302c;
+    font-weight: 900;
+}
+
+.t6-main-title {
+    padding: 0 20px;
+}
+
+.t6-main-title h1 {
+    font-size: 5.5rem;
+    line-height: 0.9;
+    font-weight: 900;
+    color: #3b2210;
+}
+
+.t6-content-grid {
+    display: flex;
+    padding: 20px;
+    margin-top: 10px;
+}
+
+.t6-left-grid {
+    width: 65%;
+}
+
+.t6-row {
+    display: flex;
+    margin-bottom: 10px;
+    border-top: 1px solid #d4c5b3;
+    padding-top: 10px;
+}
+
+.t6-box-label {
+    width: 40%;
+    font-weight: 800;
+    color: #3b2210;
+}
+
+.t6-box-label small {
+    font-weight: 500;
+    font-size: 0.75rem;
+}
+
+.t6-box-value {
+    width: 60%;
+    font-weight: 700;
+    color: #2b6a78;
+    padding-left: 10px;
+}
+
+.t6-teal {
+    color: #2b6a78 !important;
+}
+
+.t6-text-only {
+    font-weight: 600;
+    color: #3b2210;
+}
+
+.t6-online-row {
+    border-top: 2px solid #3b2210;
+    border-bottom: 2px solid #3b2210;
+    padding: 10px 0;
+}
+
+.t6-online-label {
+    width: 40%;
+    font-weight: 800;
+    color: #c9302c;
+}
+
+.t6-photo-wrapper {
+    width: 35%;
+    position: relative;
+}
+
+.t6-photo {
+    position: absolute;
+    bottom: -150px;
+    right: -20px;
+    width: 300px;
+    height: 400px;
+    object-fit: cover;
+    z-index: 10;
+    mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
+}
+
+.t6-bottom-section {
+    padding: 0 20px;
+    position: absolute;
+    bottom: 20px;
+    left: 0;
+    right: 0;
+    z-index: 20;
+}
+
+.t6-contact-row {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 10px;
+}
+
+.t6-inq {
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.t6-number {
+    font-size: 1.5rem;
+    color: #c9302c;
+}
+
+.t6-tagline {
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.t6-teacher-signature {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    font-style: italic;
+    line-height: 1;
+}
+
+.t6-quali-bottom {
+    font-size: 0.8rem;
+    font-weight: 600;
+}

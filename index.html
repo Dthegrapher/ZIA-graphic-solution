@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Generate beautiful, modern digital posters for classes instantly.">
+    <title>Digital Class Poster Generator</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,600;1,600&family=Oswald:wght@500;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <!-- html2canvas for downloading the poster as an image -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js" defer></script>
+    <script type="module" src="script.js"></script>
+</head>
+
+<body class="app-bg">
+
+    <header class="app-header">
+        <div class="header-content">
+            <div class="logo">
+                <div class="logo-icon"></div>
+                <h1>EduPoster <span>Pro</span></h1>
+            </div>
+
+            <nav class="main-nav">
+                <ul class="nav-tabs">
+                    <li><a href="#" class="nav-tab active">Home</a></li>
+                    <li><a href="#" class="nav-tab">Templates</a></li>
+                    <li><a href="#" class="nav-tab">Pricing</a></li>
+                    <li><a href="#" class="nav-tab">Contact</a></li>
+                </ul>
+            </nav>
+
+            <div class="header-actions">
+                <button class="login-btn">Log In</button>
+            </div>
+        </div>
+    </header>
+
+    <main class="app-container">
+        <!-- Left Side: Input Form -->
+        <section class="form-section">
+            <div class="form-card glass-panel">
+                <h2>Poster Details</h2>
+                <p class="subtitle">Enter the information below and choose a template.</p>
+
+                <form id="poster-form">
+                    <!-- Template Selector -->
+                    <div class="form-group">
+                        <label>Select Template</label>
+                        <div class="template-selector">
+                            <label class="template-option">
+                                <input type="radio" name="template" value="tpl-1" checked>
+                                <div class="template-card">
+                                    <div class="tpl-thumb tpl-1-thumb"></div>
+                                    <span>Landscape Pro</span>
+                                </div>
+                            </label>
+                            <label class="template-option">
+                                <input type="radio" name="template" value="tpl-2">
+                                <div class="template-card">
+                                    <div class="tpl-thumb tpl-2-thumb"></div>
+                                    <span>Tech Split</span>
+                                </div>
+                            </label>
+                            <label class="template-option">
+                                <input type="radio" name="template" value="tpl-3">
+                                <div class="template-card">
+                                    <div class="tpl-thumb tpl-3-thumb"></div>
+                                    <span>Bright Profile</span>
+                                </div>
+                            </label>
+                            <label class="template-option">
+                                <input type="radio" name="template" value="tpl-4">
+                                <div class="template-card">
+                                    <div class="tpl-thumb tpl-4-thumb"></div>
+                                    <span>Dark Impact</span>
+                                </div>
+                            </label>
+                            <label class="template-option">
+                                <input type="radio" name="template" value="tpl-5">
+                                <div class="template-card">
+                                    <div class="tpl-thumb tpl-5-thumb"></div>
+                                    <span>Expert Class</span>
+                                </div>
+                            </label>
+                            <label class="template-option">
+                                <input type="radio" name="template" value="tpl-6">
+                                <div class="template-card">
+                                    <div class="tpl-thumb tpl-6-thumb"></div>
+                                    <span>Paper Class</span>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group flex-1">
+                            <label for="yearGrade">Year / Grade</label>
+                            <input type="text" id="yearGrade" placeholder="e.g., 2026 AL" value="2026 AL">
+                        </div>
+                        <div class="form-group flex-2">
+                            <label for="subjectName">Subject / Course Name</label>
+                            <input type="text" id="subjectName" placeholder="e.g., ICT" value="ICT">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="teacherName">Teacher's Name</label>
+                        <input type="text" id="teacherName" placeholder="e.g., Hasaranga Rasanjana"
+                            value="Hasaranga Rasanjana">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="qualifications">Qualifications / Subtitle</label>
+                        <input type="text" id="qualifications" placeholder="e.g., B.Sc. Engineering"
+                            value="B.Sc. Engineering">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="institution">Institution / Extra Description</label>
+                        <textarea id="institution" rows="2"
+                            placeholder="e.g., The best class in town for advanced learning.">Theory, Revision & Practical. The best class for Advanced Level students.</textarea>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group flex-1">
+                            <label for="classDays">Class Days</label>
+                            <input type="text" id="classDays" placeholder="e.g., Thursday" value="Thursday">
+                        </div>
+                        <div class="form-group flex-1">
+                            <label for="classTime">Time</label>
+                            <input type="text" id="classTime" placeholder="e.g., 3:00 PM - 5:30 PM"
+                                value="3:00 PM - 5:30 PM">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="contactInfo">Contact Info</label>
+                        <input type="text" id="contactInfo" placeholder="e.g., 0755 346 211" value="0755 346 211">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Upload Profile Photo (Remove background for best results)</label>
+                        <div class="file-upload-wrapper">
+                            <input type="file" id="photoUpload" accept="image/*" class="file-input">
+                            <div class="file-upload-button">Choose Image</div>
+                            <span id="fileName" class="file-name">No file chosen</span>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </section>
+
+        <!-- Right Side: Live Preview -->
+        <section class="preview-section">
+            <div class="preview-header">
+                <h2>Live Preview</h2>
+                <button id="downloadBtn" class="primary-btn">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                        <polyline points="7 10 12 15 17 10"></polyline>
+                        <line x1="12" y1="15" x2="12" y2="3"></line>
+                    </svg>
+                    Download Poster
+                </button>
+            </div>
+
+            <div class="preview-container">
+
+                <!-- TEMPLATE 1: Landscape Pro (Like Image 1) -->
+                <div id="poster-tpl-1" class="poster-canvas poster-tpl-1 active-poster">
+                    <div class="t1-content">
+                        <div class="t1-left">
+                            <div class="t1-header">
+                                <h1 class="out-subjectName">ICT</h1>
+                                <h2 class="out-yearGrade">2026 AL</h2>
+                            </div>
+                            <div class="t1-desc-box">
+                                <p class="out-institution">Theory, Revision & Practical. The best class for Advanced
+                                    Level students.</p>
+                            </div>
+                            <div class="t1-bottom">
+                                <div class="t1-badge">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2">
+                                        <path
+                                            d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14v-4z" />
+                                        <rect x="3" y="6" width="12" height="12" rx="2" ry="2" />
+                                    </svg>
+                                    <div>
+                                        <strong>ONLINE</strong>
+                                        <span>ISLAND WIDE</span>
+                                    </div>
+                                </div>
+                                <div class="t1-name-box">
+                                    <span class="out-qualifications">B.Sc. Engineering</span>
+                                    <h3 class="out-teacherName">Hasaranga Rasanjana</h3>
+                                </div>
+                            </div>
+                            <div class="t1-contact">
+                                <span class="out-classDays">Thursday</span> | <span class="out-classTime">3:00 PM - 5:30
+                                    PM</span> | Call: <span class="out-contactInfo">0755 346 211</span>
+                            </div>
+                        </div>
+                        <div class="t1-right">
+                            <img class="out-photo t1-photo"
+                                src="https://images.unsplash.com/photo-1568602471122-7832951cc4c5?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                                alt="Teacher">
+                            <div class="t1-gradient-overlay"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TEMPLATE 2: Tech Split (Like Image 2) -->
+                <div id="poster-tpl-2" class="poster-canvas poster-tpl-2">
+                    <div class="t2-top">
+                        <div class="t2-info-badges">
+                            <span class="out-yearGrade">2026 AL</span>
+                            <span class="t2-badge-red">English Medium</span>
+                            <span class="t2-badge-green">Sinhala Medium</span>
+                        </div>
+                        <h1 class="out-subjectName">ICT</h1>
+                        <p class="out-institution t2-subtitle">Theory, Revision & Practical. The best class for Advanced
+                            Level students.</p>
+
+                        <div class="t2-extra-boxes">
+                            <div class="t2-box box-blue"><span class="out-classDays">Thursday</span></div>
+                            <div class="t2-box box-outline"><span class="out-classTime">3:00 PM - 5:30 PM</span></div>
+                        </div>
+
+                        <!-- Profile Image positioned between top and bottom -->
+                        <img class="out-photo t2-photo"
+                            src="https://images.unsplash.com/photo-1568602471122-7832951cc4c5?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                            alt="Teacher">
+                    </div>
+
+                    <div class="t2-bottom">
+                        <div class="t2-name-wrap">
+                            <h2 class="out-teacherName">Hasaranga Rasanjana</h2>
+                        </div>
+                        <p class="out-qualifications t2-qual">B.Sc. Engineering</p>
+
+                        <div class="t2-footer">
+                            <div class="t2-socials">
+                                <div class="t2-icons">&copy; &reg; &trade;</div>
+                            </div>
+                            <div class="t2-contact-huge">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#22d3ee"
+                                    stroke-width="2">
+                                    <path
+                                        d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z">
+                                    </path>
+                                </svg>
+                                <span class="out-contactInfo">0755 346 211</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TEMPLATE 3: Bright Profile (Like Image 3) -->
+                <div id="poster-tpl-3" class="poster-canvas poster-tpl-3">
+                    <div class="t3-top">
+                        <div class="t3-text-area">
+                            <div class="t3-year-box">
+                                <h2 class="out-yearGrade">2026 AL</h2>
+                            </div>
+                            <h1 class="out-subjectName">ICT</h1>
+                            <div class="t3-medium-badge">English / Sinhala Medium</div>
+                        </div>
+                        <img class="out-photo t3-photo"
+                            src="https://images.unsplash.com/photo-1568602471122-7832951cc4c5?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                            alt="Teacher">
+                    </div>
+                    <div class="t3-bottom">
+                        <h3 class="t3-course-title">THE EXPRESS COURSE</h3>
+                        <p class="t3-student-limit">(LIMITED NUMBER OF STUDENTS ONLY)</p>
+
+                        <div class="t3-content-split">
+                            <div class="t3-desc">
+                                <p class="out-institution">Theory, Revision & Practical. The best class for Advanced
+                                    Level students.</p>
+                            </div>
+                            <div class="t3-name-section">
+                                <span>The Engineering Tutor</span>
+                                <h2 class="out-teacherName">Hasaranga Rasanjana</h2>
+                                <p class="out-qualifications">B.Sc. Engineering</p>
+                            </div>
+                        </div>
+
+                        <div class="t3-banner-orange">
+                            Come to learn with Engineering graduate to conquer your dream
+                        </div>
+
+                        <div class="t3-info-grid">
+                            <div class="t3-grid-item">
+                                <span class="t3-label">DATE</span>
+                                <strong class="out-classDays">Thursday</strong>
+                                <span class="out-classTime">3:00 PM - 5:30 PM</span>
+                            </div>
+                            <div class="t3-grid-item">
+                                <span class="t3-label">CONTACT</span>
+                                <strong class="out-contactInfo">0755 346 211</strong>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TEMPLATE 4: Dark Impact (Like Image 4) -->
+                <div id="poster-tpl-4" class="poster-canvas poster-tpl-4">
+                    <div class="t4-container">
+                        <img class="out-photo t4-photo"
+                            src="https://images.unsplash.com/photo-1568602471122-7832951cc4c5?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                            alt="Teacher">
+                        <div class="t4-gradient"></div>
+
+                        <div class="t4-content">
+                            <div class="t4-header">
+                                <h2 class="out-yearGrade">2026 AL</h2>
+                                <h1 class="out-subjectName">ICT</h1>
+                            </div>
+
+                            <div class="t4-desc-container">
+                                <p class="out-institution">Theory, Revision & Practical. The best class for Advanced
+                                    Level students. Join today and start your journey towards excellence.</p>
+                                <p class="t4-sub-details"><span class="out-classDays">Thursday</span> | <span
+                                        class="out-classTime">3:00 PM - 5:30 PM</span></p>
+                            </div>
+
+                            <div class="t4-footer">
+                                <div class="t4-name-wrap">
+                                    <h3 class="out-teacherName">Hasaranga Rasanjana</h3>
+                                    <span class="out-qualifications">B.Sc. Engineering</span>
+                                </div>
+                                <div class="t4-contact-wrap">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2">
+                                        <path
+                                            d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z">
+                                        </path>
+                                    </svg>
+                                    <h2 class="out-contactInfo">0755 346 211</h2>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TEMPLATE 5: Expert Class -->
+                <div id="poster-tpl-5" class="poster-canvas poster-tpl-5">
+                    <div class="t5-bg"></div>
+                    <div class="t5-content">
+                        <div class="t5-top-bar">
+                            <span class="t5-medium-badge">English Medium</span>
+                            <div class="t5-unit-badge">
+                                <div class="t5-ub-circle"></div>
+                                <div class="t5-ub-inner">
+                                    <small>Starting Unit</small>
+                                    <strong>04</strong>
+                                    <small>GASEOUS STATE OF MATTER</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="t5-header-info">
+                            <div class="t5-year-row">
+                                <h1 class="out-yearGrade t5-year">2026 AL</h1>
+                                <div class="t5-district-badge">
+                                    <img src="https://upload.wikimedia.org/wikipedia/commons/4/4f/Simple_gold_crown.svg"
+                                        alt="crown" width="30" />
+                                    <div>DISTRICT</div>
+                                    <h2>1</h2>
+                                </div>
+                            </div>
+                            <h2 class="t5-subjectName out-subjectName">CHEMISTRY</h2>
+                            <h3 class="t5-expert">EXPERT</h3>
+                        </div>
+
+                        <div class="t5-middle-grid">
+                            <div class="t5-left-col">
+                                <div class="t5-class-loc">
+                                    <div class="t5-loc-box">■ ROTARY <br><small>Nugegoda</small></div>
+                                    <div class="t5-loc-box">■ YAHANSA <br><small>Gampaha</small></div>
+                                    <div class="t5-loc-box">
+                                        ■ Online zoom class <br>
+                                        <small><span class="out-classDays">Tuesday</span></small><br>
+                                        <small><span class="out-classTime">7.00 pm - 10.00 pm</span></small><br>
+                                        <small style="font-size: 0.6rem;">(LIVE CLASS)</small>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="t5-right-col">
+                                <h4>First three lessons can be covered</h4>
+                                <div class="t5-programs">
+                                    <p>Our special programs</p>
+                                    <ul>
+                                        <li>memory Refresh</li>
+                                        <li>Super Tute</li>
+                                        <li>Paper Discussion</li>
+                                        <li>Speed Meter</li>
+                                        <li>Theory Tute</li>
+                                    </ul>
+                                </div>
+                                <div class="t5-inst"><span class="out-institution">This package is completely free for
+                                        theory class students</span></div>
+                            </div>
+                        </div>
+
+                        <img class="out-photo t5-photo"
+                            src="https://images.unsplash.com/photo-1568602471122-7832951cc4c5?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                            alt="Teacher">
+
+                        <div class="t5-footer">
+                            <div class="t5-name-wrap">
+                                <p class="t5-quali out-qualifications">Chemistry | Expert</p>
+                                <h2 class="out-teacherName t5-teacher-name">BHAGYA<br>Hettiarachchi</h2>
+                            </div>
+                        </div>
+                        <div class="t5-bottom-bar">
+                            Registration <span class="out-contactInfo">076 5 600 600</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TEMPLATE 6: Paper Class -->
+                <div id="poster-tpl-6" class="poster-canvas poster-tpl-6">
+                    <div class="t6-header">
+                        <div class="t6-header-left">
+                            <span class="t6-badge-red">English Medium</span>
+                            <h2 class="out-subjectName t6-title">CHEMISTRY</h2>
+                        </div>
+                        <div class="t6-header-right">
+                            <span class="t6-adv">Advance Level Examination</span>
+                            <h1 class="out-yearGrade t6-year">2026</h1>
+                        </div>
+                    </div>
+
+                    <div class="t6-main-title">
+                        <h1>PEPAR<br>CLASSES</h1>
+                    </div>
+
+                    <div class="t6-content-grid">
+                        <div class="t6-left-grid">
+                            <div class="t6-row">
+                                <div class="t6-box-label t6-box-brown">SITHUSARA<br><small>GAMPAHA</small></div>
+                                <div class="t6-box-value">Wednesday<br>3.00 pm 5.00 pm</div>
+                            </div>
+                            <div class="t6-row">
+                                <div class="t6-box-label t6-box-brown">SAKYA<br><small>KIRIBATHGODA</small></div>
+                                <div class="t6-box-value">Saturday<br>4.30 pm 6.30 pm</div>
+                            </div>
+                            <div class="t6-row">
+                                <div class="t6-box-label t6-box-brown">IMS<br><small>NEGOMBO</small></div>
+                                <div class="t6-box-value t6-teal"><span class="out-classDays">Sunday</span><br><small
+                                        class="out-classTime">8.30 pm - 11.30 pm</small></div>
+                            </div>
+                            <div class="t6-row t6-online-row">
+                                <div class="t6-online-label">Online<br>Discussion on</div>
+                                <div class="t6-box-value t6-text-only">At convent time for the student</div>
+                            </div>
+                        </div>
+
+                        <div class="t6-photo-wrapper">
+                            <img class="out-photo t6-photo"
+                                src="https://images.unsplash.com/photo-1568602471122-7832951cc4c5?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                                alt="Teacher">
+                        </div>
+                    </div>
+
+                    <div class="t6-bottom-section">
+                        <div class="t6-contact-row">
+                            <span class="t6-inq">For inquiries<br>Call &amp; Whatsapp</span>
+                            <h3 class="out-contactInfo t6-number">0777 246644</h3>
+                        </div>
+                        <p class="t6-tagline">Your Ultimate Guide To Chemistry</p>
+                        <h2 class="out-teacherName t6-teacher-signature">Sandaruwan Adhikari</h2>
+                        <span class="out-qualifications t6-quali-bottom">B.Sc (Hons) University Of Peradeniya</span>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+</body>
+
+</html>
